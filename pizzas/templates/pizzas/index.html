@@ -1,0 +1,12 @@
+
+{% extends "pizzas/base.html" %}
+
+{% block content %}
+<P> Welcome to the Baylor Pizzeria! </P>
+
+<P> Click the link below to view our list of pizzas available. </P>
+
+<P>
+    <a href="{% url 'pizzas:pizzas' %}">Pizza Menu</a>
+</P>
+{% endblock content %}
