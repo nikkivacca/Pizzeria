@@ -1,12 +1,18 @@
 
 {% extends "pizzas/base.html" %}
 
-{% block content %}
-<P> Welcome to the Baylor Pizzeria! </P>
+{% block page_header %}
+<div class="jumbotron">
+    <h1 class="display-4">Baylor Pizzeria</h1>
+    
+    <p class="lead"> Welcome to the Baylor Pizzeria!</p>
+    
+    <hr class="my-4">
 
-<P> Click the link below to view our list of pizzas available. </P>
+    <P>Select Pizzas below to view all available pizzas.</P>
 
-<P>
-    <a href="{% url 'pizzas:pizzas' %}">Pizza Menu</a>
-</P>
-{% endblock content %}
+    <p class="lead">
+        <a class="btn btn-primary btn-lg" href="{% url 'pizzas:pizzas' %}" role="buton">Pizzas</a>
+    </p>
+    </div>
+{% endblock page_header %}

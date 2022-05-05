@@ -1,9 +1,38 @@
+{% load bootstrap4 %}
 
-<P>
-    <a href="{% url 'pizzas:index' %}">Pizzeria Homepage</a>
-</P>
+<!doctype html>
 
-{% block content %}
+<html lang="en">
 
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,
+    shrink-to-fit=no">
+    <title>Pizzeria</title>
+    
+    {% bootstrap_css %}
 
-{% endblock content %}
+    {% bootstrap_javascript jquery='full' %}
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md navbar-light bg-light mb-4 border">
+    <a class="navbar-brand" href="{% url 'pizzas:index'%}">
+        Home</a>
+    <a class="navbar-brand" href="{% url 'pizzas:pizzas' %}">
+        Pizzas</a>
+    </nav>
+
+<main role ="main" class="container">
+    <div class ="pb-2 mb-2 border-bottom">
+        {% block page_header %}{% endblock page_header %}
+    </div>
+
+    <div>
+        {% block content %}{% endblock content %}
+    </div>
+</main>
+
+</body>
+
+</html>

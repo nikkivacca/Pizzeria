@@ -1,24 +1,51 @@
 {% extends "pizzas/base.html" %}
 
+{% block page_header %}
+
+<h1>{{ pizza }}</h1>
+
+{% endblock page_header %}
+
 {% block content %}
 <P>
     <a href="{% url 'pizzas:pizzas' %}">Pizza Menu</a>
 </P>
 
-<P> 
-    Pizza: {{ pizza }}
-</P>
 
-<ul>
     {% for t in toppings %}
-    <li>
-        <p>
+    <div class='card mb-3'>
+        <div class='card-body'>
             {{ t }}
-        </p>
-    </li>
+        </div>
+    </div>
+   
     {% empty %}
-    <li> There are no toppings on this pizza.</li>
+    <p> There are no toppings on this pizza.<p>
     {% endfor %}
-</ul>
 
+    <P>Comments: </P>
+
+    {% for c in comment %} 
+    <div class="card mb-3">
+        <div class = "card-body">
+            {{c|linebreaks }}
+        </div>
+    </div>
+
+    {% empty %} 
+    <P> There have been no comments made yet for this pizza.</P>
+    {% endfor %} 
+
+    <h3><a href="{% url 'pizzas:comment' pizza.id %}">Add a new comment</a></h3>
+
+    {% for i in image %} 
+    <div class="col-md-4">
+        <img src="{{i.image.url }}" class="img-responsive" style="width: 100%; float: left; margin-right: 10px;"/>
+
+    </div>
+
+    {% empty %} 
+    <p> No image is available for this pizza.</p>
+
+    {% endfor %} 
 {% endblock content %}

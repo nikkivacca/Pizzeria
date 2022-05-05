@@ -4,7 +4,6 @@ from django.db import models
 
 class Pizza(models.Model):
     pizza_name= models.CharField(max_length=200)
-    date_added= models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.pizza_name
@@ -22,3 +21,17 @@ class Topping(models.Model):
         return f"{self.topping_name[:50]}"
 
 
+class Comment(models.Model):
+    pizza= models.ForeignKey(Pizza, on_delete=models.CASCADE)
+    comment= models.TextField()
+    date_added= models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name_plural= 'Comments'
+    
+    def __str__(self): 
+        return f"{self.comment[:300]}"
+
+class Image(models.Model):
+    pizza=models.ForeignKey(Pizza, on_delete=models.CASCADE)
+    image=models.ImageField(upload_to= 'images/')
