@@ -7,10 +7,14 @@
 {% endblock page_header %}
 
 {% block content %}
+
+<div class="col-md-4">
+    <img src="{{ pizza.image.url }}" class="img-responsive" style="width: 100%; float: left; margin-right: 10px;"/>
+</div>
+
 <P>
     <a href="{% url 'pizzas:pizzas' %}">Pizza Menu</a>
 </P>
-
 
     {% for t in toppings %}
     <div class='card mb-3'>
@@ -38,14 +42,5 @@
 
     <h3><a href="{% url 'pizzas:comment' pizza.id %}">Add a new comment</a></h3>
 
-    {% for i in image %} 
-    <div class="col-md-4">
-        <img src="{{i.image.url }}" class="img-responsive" style="width: 100%; float: left; margin-right: 10px;"/>
-
-    </div>
-
-    {% empty %} 
-    <p> No image is available for this pizza.</p>
-
-    {% endfor %} 
+    
 {% endblock content %}
